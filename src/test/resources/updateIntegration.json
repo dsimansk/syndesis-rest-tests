@@ -1,0 +1,83 @@
+{
+	"token": "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJyMlRhc1EzQkt5VUlRb1paVFgzMmtvdVpVejRVSTFzZTZ4NmNXeEU5bzcwIn0.eyJqdGkiOiIxNDRhZTU0OS0yM2VlLTRiMzEtOTRjMC1iMjM0YzNkMzBmYzciLCJleHAiOjE0OTgwNjA1NzAsIm5iZiI6MCwiaWF0IjoxNDk4MDMwNTcwLCJpc3MiOiJodHRwczovL3N5bmRlc2lzLjE5Mi4xNjguOTkuMTAwLnhpcC5pby9hdXRoL3JlYWxtcy9zeW5kZXNpcyIsImF1ZCI6InN5bmRlc2lzLXVpIiwic3ViIjoiYjk1YmNhNzMtNzE4Ni00NTVmLTg2OTctOGY3NDhmNmE4OWJiIiwidHlwIjoiQmVhcmVyIiwiYXpwIjoic3luZGVzaXMtdWkiLCJub25jZSI6IlpJcUFvcXNWVTVQQlc0WUU5MlQ4TWZaQWc3VzRxak16TlBXRVpsVTlKS1NLV3BOdzRLYTlvekhEZW5ENnV3VFMiLCJhdXRoX3RpbWUiOjE0OTgwMzA1MDgsInNlc3Npb25fc3RhdGUiOiI0NmRiZWJmZS1hNjYyLTQ3NTctYjMxZC1hN2I1YWJlYTE4ZDMiLCJhY3IiOiIxIiwiY2xpZW50X3Nlc3Npb24iOiI0NTc5ZDgxZi1jNjAwLTQ5YmItOTgyYi1iM2U1MWJjZGQwZWMiLCJhbGxvd2VkLW9yaWdpbnMiOlsiaHR0cHM6Ly9zeW5kZXNpcy4xOTIuMTY4Ljk5LjEwMC54aXAuaW8iLCJodHRwOi8vbG9jYWxob3N0OjQyMDAiXSwicmVzb3VyY2VfYWNjZXNzIjp7ImJyb2tlciI6eyJyb2xlcyI6WyJyZWFkLXRva2VuIl19fSwibmFtZSI6InRlc3QgdGVzdCIsInByZWZlcnJlZF91c2VybmFtZSI6InRlc3QiLCJnaXZlbl9uYW1lIjoidGVzdCIsImZhbWlseV9uYW1lIjoidGVzdCIsImVtYWlsIjoidHBsZXZrb0ByZWRoYXQuY29tIn0.B9BLhyhyFI5T0lWjRReRRwcK5uWFqCHvmjL19IB_zClDVygH1MuWQR4LtoZ2tVQMOZM56ODK1OEqoi88CtngcrpCkIwfmy7wuSVWe4SoPCRaZYHNHPT-mkjNAfvrQnkY_DZsStePunDf036ZvlQ7wqtyZslSAbwBWwuu9N6kxfNzq1x8msxnrBP7DNeshN6QlnLWtQ57Wx_wqI19zv6HzE9uvDfHFNEh6Agmd4BuA-imWhdj3JEq4BFJIR09DF1VjWj4oG9EXVY7CNWHTCO2sDX55PyyackbsN4ca82ruw_xLDzhqFipTKJ6MXo7nzZqSV2XdOidvnRlTXB3wf7CLg",
+	"users": [],
+	"steps": [
+		{
+			"action": {
+				"description": "Search for tweets that mention you",
+				"camelConnectorGAV": "io.syndesis:twitter-mention-connector:0.4.4",
+				"camelConnectorPrefix": "twitter-mention",
+				"inputDataShape": {
+					"kind": "none"
+				},
+				"outputDataShape": {
+					"kind": "java",
+					"type": "twitter4j.Status"
+				},
+				"id": "io.syndesis:twitter-mention-connector:latest",
+				"name": "Mention",
+				"properties": {}
+			},
+			"connection": {
+				"connectorId": "twitter",
+				"configuredProperties": {
+					"accessToken": "",
+					"accessTokenSecret": "",
+					"consumerKey": "",
+					"consumerSecret": ""
+				},
+				"options": {},
+				"icon": "fa-twitter",
+				"description": "Twitter Connection",
+				"lastUpdated": 1492095344060,
+				"createdDate": 1492095344060,
+				"id": "1",
+				"name": "Twitter Example"
+			},
+			"stepKind": "endpoint",
+			"configuredProperties": {}
+		},
+		{
+			"stepKind": "split",
+			"configuredProperties": {}
+		},
+		{
+			"action": {
+				"description": "Create a new Salesforce case based on the input message",
+				"camelConnectorGAV": "io.syndesis:salesforce-create-case-connector:0.4.4",
+				"camelConnectorPrefix": "salesforce-create-case",
+				"id": "io.syndesis:salesforce-create-case-connector:latest",
+				"name": "Create Case",
+				"properties": {}
+			},
+			"connection": {
+				"connectorId": "salesforce",
+				"configuredProperties": {
+					"clientId": "",
+					"clientSecret": "",
+					"loginUrl": "https://login.salesforce.com",
+					"refreshToken": ""
+				},
+				"options": {},
+				"icon": "fa-globe",
+				"description": "Salesforce Connection",
+				"lastUpdated": 1492095344060,
+				"createdDate": 1492095344060,
+				"id": "2",
+				"tags": [
+					"example",
+					"test"
+				],
+				"name": "Salesforce Example"
+			},
+			"stepKind": "endpoint",
+			"configuredProperties": {}
+		}
+	],
+	"desiredStatus": "Activated",
+	"currentStatus": "Pending",
+	"lastUpdated": 1497515692269,
+	"createdDate": 1497511628447,
+	"id": "-Kn9slBFCpaAgMM9efZZ",
+	"name": "Test-update"
+}

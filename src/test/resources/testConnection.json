@@ -1,0 +1,71 @@
+{
+	"icon": "fa-globe",
+	"connector": {
+		"icon": "fa-globe",
+		"properties": {},
+		"description": "Interact with APIs and plain HTTP endpoints",
+		"actions": [
+			{
+				"description": "Call a service that is internal (within your company) or external (on the internet) by specifying the service's URL",
+				"camelConnectorGAV": "io.syndesis:http-get-connector:0.4.4",
+				"camelConnectorPrefix": "http-get",
+				"inputDataShape": {
+					"kind": "none"
+				},
+				"outputDataShape": {
+					"kind": "any"
+				},
+				"id": "io.syndesis:http-get-connector:latest",
+				"name": "HTTP GET",
+				"properties": {
+					"httpUri": {
+						"kind": "path",
+						"displayName": "Http Uri",
+						"group": "producer",
+						"label": "producer",
+						"required": true,
+						"type": "string",
+						"javaType": "java.net.URI",
+						"deprecated": false,
+						"secret": false,
+						"componentProperty": false,
+						"description": "The url of the HTTP endpoint to call."
+					}
+				}
+			},
+			{
+				"description": "Call a service that is internal (within your company) or external (on the internet) by specifying the service's URL",
+				"camelConnectorGAV": "io.syndesis:http-post-connector:0.4.4",
+				"camelConnectorPrefix": "http-post",
+				"inputDataShape": {
+					"kind": "any"
+				},
+				"outputDataShape": {
+					"kind": "any"
+				},
+				"id": "io.syndesis:http-post-connector:latest",
+				"name": "HTTP POST",
+				"properties": {
+					"httpUri": {
+						"kind": "path",
+						"displayName": "Http Uri",
+						"group": "producer",
+						"label": "producer",
+						"required": true,
+						"type": "string",
+						"javaType": "java.net.URI",
+						"deprecated": false,
+						"secret": false,
+						"componentProperty": false,
+						"description": "The url of the HTTP endpoint to call."
+					}
+				}
+			}
+		],
+		"id": "http",
+		"name": "HTTP"
+	},
+	"connectorId": "http",
+	"configuredProperties": {},
+	"name": "test"
+}

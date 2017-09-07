@@ -1,0 +1,73 @@
+{
+	"name": "Test",
+	"steps": [
+		{
+			"configuredProperties": {},
+			"stepKind": "endpoint",
+			"action": {
+				"camelConnectorPrefix": "twitter-mention",
+				"name": "Mention",
+				"description": "Search for tweets that mention you",
+				"inputDataShape": {
+					"kind": "none"
+				},
+				"outputDataShape": {
+					"kind": "java",
+					"type": "twitter4j.Status"
+				},
+				"id": "io.syndesis:twitter-mention-connector:latest",
+				"properties": {},
+				"camelConnectorGAV": "io.syndesis:twitter-mention-connector:0.4.4"
+			},
+			"connection": {
+				"configuredProperties": {
+					"consumerSecret": "",
+					"accessToken": "",
+					"consumerKey": "",
+					"accessTokenSecret": ""
+				},
+				"lastUpdated": 1492095344060,
+				"createdDate": 1492095344060,
+				"connectorId": "twitter",
+				"options": {},
+				"icon": "fa-twitter",
+				"name": "Twitter Example",
+				"description": "Twitter Connection",
+				"id": "1"
+			}
+		},
+		{
+			"configuredProperties": {},
+			"stepKind": "endpoint",
+			"action": {
+				"camelConnectorPrefix": "salesforce-create-case",
+				"name": "Create Case",
+				"description": "Create a new Salesforce case based on the input message",
+				"id": "io.syndesis:salesforce-create-case-connector:latest",
+				"properties": {},
+				"camelConnectorGAV": "io.syndesis:salesforce-create-case-connector:0.4.4"
+			},
+			"connection": {
+				"configuredProperties": {
+					"clientId": "",
+					"loginUrl": "https://login.salesforce.com",
+					"clientSecret": "",
+					"refreshToken": ""
+				},
+				"lastUpdated": 1492095344060,
+				"createdDate": 1492095344060,
+				"connectorId": "salesforce",
+				"options": {},
+				"icon": "fa-globe",
+				"name": "Salesforce Example",
+				"description": "Salesforce Connection",
+				"id": "2",
+				"tags": [
+					"example",
+					"test"
+				]
+			}
+		}
+	],
+	"desiredStatus": "Activated"
+}
