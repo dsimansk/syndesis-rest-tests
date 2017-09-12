@@ -123,8 +123,6 @@ public final class SampleDataGenerator {
 				.camelConnectorGAV("http-get")
 				.camelConnectorPrefix("twitter-mention")
 				.name("Mention")
-				.inputDataShape(new DataShape.Builder().kind("none").build())
-				.outputDataShape(new DataShape.Builder().kind("java").type("twitter4j.Status").build())
 				.connectorId("io.syndesis:twitter-mention-connector:latest")
 				.build();
 		return action;
@@ -148,8 +146,6 @@ public final class SampleDataGenerator {
 				.description("Call a service that is internal (within your company) or external (on the internet) by specifying the service's URL")
 				.camelConnectorPrefix("http-get")
 				.name(name)
-				.inputDataShape(new DataShape.Builder().kind("none").build())
-				.outputDataShape(new DataShape.Builder().kind("any").build())
 				.connectorId("io.syndesis:http-get-connector:latest")
 				//				.properties(map("loginUrl", "https://login.salesforce.com"))
 				.build();

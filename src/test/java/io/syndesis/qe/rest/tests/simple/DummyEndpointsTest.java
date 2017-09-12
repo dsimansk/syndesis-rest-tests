@@ -38,15 +38,6 @@ public class DummyEndpointsTest extends AbstractSyndesisRestTest {
 		assertTrue(Integer.parseInt(response.path("totalCount").toString()) >= 0);
 	}
 
-	/**
-	 * Test. GET /api/v1/connectorgroups/{id}
-	 */
-	@Ignore
-	@Test
-	public void connectorgroupsByIdTest() {
-
-		assertTrue("Not implemented yet", false);
-	}
 
 	/**
 	 * Test. GET /api/v1/permissions
@@ -65,73 +56,6 @@ public class DummyEndpointsTest extends AbstractSyndesisRestTest {
 	}
 
 	/**
-	 * Test. GET /api/v1/permissions/{id}
-	 */
-	@Ignore
-	@Test
-	public void permissionsByIdTest() {
-
-		assertTrue("Not implemented yet", false);
-	}
-
-	/**
-	 * Test. GET /api/v1/integrationtemplates/{id}
-	 */
-	@Test
-	@Ignore("IntegrationTemplateEndpoint has been removed")
-	public void integrationtemplatesTest() {
-
-		final Response response = given().relaxedHTTPSValidation().auth().oauth2(token)
-				.when()
-				.get("/integrationtemplates");
-
-		log.info("********** List integrationtemplates *********");
-		log.info(response.asString());
-		log.info("**********************************************");
-		assertTrue(Integer.parseInt(response.path("totalCount").toString()) >= 0);
-	}
-
-	/**
-	 * Test. GET /api/v1/integrationtemplates/{id}
-	 */
-	@Ignore
-	@Test
-	public void integrationtemplatesByIdTest() {
-
-		assertTrue("Not implemented yet", false);
-	}
-
-	/**
-	 * Test. POST /api/v1/integrationtemplates/{id}
-	 */
-	@Ignore
-	@Test
-	public void createIntegrationtemplatesByIdTest() {
-
-		assertTrue("Not implemented yet", false);
-	}
-
-	/**
-	 * Test. PUT /api/v1/integrationtemplates/{id}
-	 */
-	@Ignore
-	@Test
-	public void updateIntegrationtemplatesByIdTest() {
-
-		assertTrue("Not implemented yet", false);
-	}
-
-	/**
-	 * Test. DELETE /api/v1/integrationtemplates/{id}
-	 */
-	@Ignore
-	@Test
-	public void deleteIntegrationtemplatesByIdTest() {
-
-		assertTrue("Not implemented yet", false);
-	}
-
-	/**
 	 * Test. GET /api/v1/users
 	 */
 	@Test
@@ -147,42 +71,7 @@ public class DummyEndpointsTest extends AbstractSyndesisRestTest {
 		assertTrue(Integer.parseInt(response.path("totalCount").toString()) >= 0);
 	}
 
-	/**
-	 * Test. GET /api/v1/users/{id}
-	 */
-	@Ignore
-	@Test
-	public void usersByIdTest() {
 
-		assertTrue("Not implemented yet", false);
-	}
-
-	/**
-	 * Test. GET /api/v1/actions
-	 */
-	@Test
-	@Ignore("Action endpoint has been removed")
-	public void actionsTest() {
-
-		final Response response = given().relaxedHTTPSValidation().auth().oauth2(token)
-				.when()
-				.get("/actions");
-
-		log.info("**************** List actions ****************");
-		log.info(response.asString());
-		log.info("**********************************************");
-		assertTrue(Integer.parseInt(response.path("totalCount").toString()) >= 0);
-	}
-
-	/**
-	 * Test. GET /api/v1/actions/{id}
-	 */
-	@Ignore
-	@Test
-	public void actionsByIdTest() {
-
-		assertTrue("Not implemented yet", false);
-	}
 
 	/**
 	 * Test. GET /api/v1/roles
@@ -201,16 +90,6 @@ public class DummyEndpointsTest extends AbstractSyndesisRestTest {
 	}
 
 	/**
-	 * Test. GET /api/v1/roles/{id}
-	 */
-	@Ignore
-	@Test
-	public void rolesByIdTest() {
-
-		assertTrue("Not implemented yet", false);
-	}
-
-	/**
 	 * Test. GET /api/v1/tags
 	 */
 	@Test
@@ -224,67 +103,5 @@ public class DummyEndpointsTest extends AbstractSyndesisRestTest {
 		log.info(response.asString());
 		log.info("**********************************************");
 		assertTrue(Integer.parseInt(response.path("totalCount").toString()) >= 0);
-	}
-
-	/**
-	 * Test. GET /api/v1/integrationpatterns/{id}
-	 */
-	@Test
-	@Ignore("IntegrationPatternEndpoint has been removed")
-	public void integrationpatternsTest() {
-
-		final Response response = given().relaxedHTTPSValidation().auth().oauth2(token)
-				.when()
-				.get("/integrationpatterns");
-
-		log.info("*********** List integrationpatterns *********");
-		log.info(response.asString());
-		log.info("**********************************************");
-		assertTrue(Integer.parseInt(response.path("totalCount").toString()) >= 0);
-	}
-
-	/**
-	 * Test. GET /api/v1/users/{id}
-	 */
-	@Ignore
-	@Test
-	public void integrationpatternsByIdTest() {
-
-		assertTrue("Not implemented yet", false);
-	}
-
-	@Test
-	@Ignore("IntegrationTemplateEndpoint has been removed")
-	public void integrationTemplatesTest() {
-
-		final Response response = given().relaxedHTTPSValidation().auth().oauth2(token)
-				.when()
-				.get("/integrationtemplates");
-
-		log.info("********** List integrationTemplates *********");
-		log.info(response.asString());
-		log.info("**********************************************");
-
-		assertTrue(Integer.parseInt(response.path("totalCount").toString()) >= 0);
-	}
-
-	/**
-	 * Test. POST /api/v1/integration-support/generate/pom.xml
-	 */
-	@Ignore
-	@Test
-	public void integrationsupportTest() {
-
-		assertTrue("Not implemented yet", false);
-	}
-
-	/**
-	 * Test. POST /api/v1/event/reservations
-	 */
-	@Ignore
-	@Test
-	public void eventReservationsTest() {
-
-		assertTrue("Not implemented yet", false);
 	}
 }
