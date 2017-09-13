@@ -10,7 +10,20 @@ You may run the tests against a syndesis instance deployed on OpenShift as follo
 mvn clean install -Dtoken=<SYNDESIS_USER_TOKEN> -Dsyndesis.url=<SYNDESIS_INSTANCE_URL> -Dcredentials.file=<PATH_TO_CREDENTIALS_FILE>
 ```
 
-## Credentials
+## System properties
+
+Several properties may influence coarse of the tests. Mandatory properties are shown in bold.
+
+* **token**
+    * valid token which can be used for accessing syndesis REST
+* **syndesis.url**
+    * URL of running syndesis instance
+* **credentials.file**
+    * JSON file with third party services credentials (see example below)
+* versions.file
+    * Properties file which contains expected dependencies versions of syndesis generated integrations
+
+### Credentials
 
 These tests require access to third party services such as GitHub, Twitter, and Salesforce. You will need at least:
 

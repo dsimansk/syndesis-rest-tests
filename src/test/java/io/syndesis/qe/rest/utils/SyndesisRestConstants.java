@@ -18,4 +18,5 @@ public final class SyndesisRestConstants {
 	public static final String SYNDESIS_URL = "syndesis.url";
 
 	public static final String ACCOUNT_CONFIG_PATH = System.getProperty("credentials.file", "./target/test-classes/credentials.json");
+	public static final String VERSIONS_CONFIG_PATH = System.getProperty("versions.file", "./target/test-classes/dependencyVersions.properties");
 }
