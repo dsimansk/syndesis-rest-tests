@@ -7,6 +7,11 @@ import static org.hamcrest.core.Is.is;
 import static org.hamcrest.core.IsEqual.equalTo;
 import static org.infinispan.util.ByteString.emptyString;
 
+import io.fabric8.kubernetes.client.dsl.MixedOperation;
+import io.fabric8.openshift.api.model.DeploymentConfig;
+import io.fabric8.openshift.api.model.DeploymentConfigList;
+import io.fabric8.openshift.api.model.DoneableDeploymentConfig;
+import io.fabric8.openshift.client.dsl.DeployableScalableResource;
 import io.syndesis.qe.rest.accounts.Account;
 import io.syndesis.qe.rest.accounts.AccountsDirectory;
 import io.syndesis.qe.rest.dto.salesforce.Contact;
@@ -101,7 +106,7 @@ public class TwitterSalesforceTest extends AbstractSyndesisRestTest {
 	}
 
 	private void cleanup() throws TwitterException {
-		TestSupport.resetDB(token);
+		TestSupport.resetDB(syndesisToken);
 		GitHubUtils.deleteRepositories(gitHub, accountsDirectory.getAccount("github").get().getProperty("login") + "/" + GITHUB_REPO_NAME);
 		deleteSalesforceContact(salesforce, accountsDirectory.getAccount("twitter_talky").get().getProperty("screenName"));
 		deleteAllTweets(twitter);
@@ -117,9 +122,9 @@ public class TwitterSalesforceTest extends AbstractSyndesisRestTest {
 
 		mapping = new String(Files.readAllBytes(Paths.get("./target/test-classes/mappings/twitter-salesforce.json")));
 
-		connectorsEndpoint = new ConnectorsEndpoint(syndesisURL, token);
-		connectionsEndpoint = new ConnectionsEndpoint(syndesisURL, token);
-		integrationsEndpoint = new IntegrationsEndpoint(syndesisURL, token);
+		connectorsEndpoint = new ConnectorsEndpoint(syndesisURL, syndesisToken);
+		connectionsEndpoint = new ConnectionsEndpoint(syndesisURL, syndesisToken);
+		integrationsEndpoint = new IntegrationsEndpoint(syndesisURL, syndesisToken);
 
 		twitterConnector = connectorsEndpoint.get("twitter");
 		salesforceConnector = connectorsEndpoint.get("salesforce");

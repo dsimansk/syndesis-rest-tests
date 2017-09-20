@@ -32,7 +32,7 @@ public class ConnectorsTest extends AbstractSyndesisRestTest {
 
 	@AfterClass
 	public static void cleanUp() {
-		TestSupport.resetDB(token);
+		TestSupport.resetDB(syndesisToken);
 	}
 
 	@Test
@@ -40,7 +40,7 @@ public class ConnectorsTest extends AbstractSyndesisRestTest {
 
 		final List<String> connectorIds = new ArrayList<>();
 
-		final Response result = given().relaxedHTTPSValidation().auth().oauth2(token)
+		final Response result = given().relaxedHTTPSValidation().auth().oauth2(syndesisToken)
 				.when()
 				//				.pathParam("id", "twitter")
 				//				.get("/connectors/{id}/actions");
@@ -58,7 +58,7 @@ public class ConnectorsTest extends AbstractSyndesisRestTest {
 
 		for (String connectorId : connectorIds) {
 
-			final Response response = given().relaxedHTTPSValidation().auth().oauth2(token)
+			final Response response = given().relaxedHTTPSValidation().auth().oauth2(syndesisToken)
 					.when()
 					.pathParam("id", connectorId)
 					.get("/connectors/{id}/actions");
@@ -78,7 +78,7 @@ public class ConnectorsTest extends AbstractSyndesisRestTest {
 	@Test
 	public void getConnectorsListTest() {
 
-		final Response response = given().relaxedHTTPSValidation().auth().oauth2(token)
+		final Response response = given().relaxedHTTPSValidation().auth().oauth2(syndesisToken)
 				.when()
 				.get("/connectors");
 
@@ -92,7 +92,7 @@ public class ConnectorsTest extends AbstractSyndesisRestTest {
 	@Test
 	public void ftpConnectorsByIdTest() {
 
-		final Response response = given().relaxedHTTPSValidation().auth().oauth2(token)
+		final Response response = given().relaxedHTTPSValidation().auth().oauth2(syndesisToken)
 				.when()
 				.pathParam("id", "ftp")
 				.get("/connectors/{id}");
