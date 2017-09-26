@@ -35,7 +35,7 @@ public class IntegrationsCrudTest extends AbstractSyndesisRestTest {
 
 	@After
 	public void cleanUp() {
-		TestSupport.resetDB(token);
+		TestSupport.resetDB(syndesisToken);
 	}
 
 	/**
@@ -60,7 +60,7 @@ public class IntegrationsCrudTest extends AbstractSyndesisRestTest {
 		final Response integrationResponse = createSampleIntegration(integrationName);
 
 		final List<String> integrationNames = new ArrayList<>();
-		final Response integrations = given().relaxedHTTPSValidation().auth().oauth2(token)
+		final Response integrations = given().relaxedHTTPSValidation().auth().oauth2(syndesisToken)
 				.when()
 				.get("/integrations");
 
@@ -87,9 +87,9 @@ public class IntegrationsCrudTest extends AbstractSyndesisRestTest {
 
 		final String newIntegrationName = "Updated";
 		final Integration testIntegration = SampleDataGenerator.createSampleIntegration(newIntegrationName,
-				Optional.of(integrationResponse.path("id").toString()), Optional.of(token));
+				Optional.of(integrationResponse.path("id").toString()), Optional.of(syndesisToken));
 
-		given().relaxedHTTPSValidation().auth().oauth2(token).request()
+		given().relaxedHTTPSValidation().auth().oauth2(syndesisToken).request()
 				.contentType("application/json").body(testIntegration)
 				.pathParam("id", integrationResponse.path("id").toString())
 				.then().expect().response().statusCode(204)
@@ -109,7 +109,7 @@ public class IntegrationsCrudTest extends AbstractSyndesisRestTest {
 		final String integrationName = "Test";
 		final Response integrationResponse = createSampleIntegration(integrationName);
 
-		given().relaxedHTTPSValidation().auth().oauth2(token).request()
+		given().relaxedHTTPSValidation().auth().oauth2(syndesisToken).request()
 				.pathParam("id", integrationResponse.path("id").toString())
 				.then().expect().response().statusCode(204).when().delete("/integrations/{id}");
 
@@ -121,7 +121,7 @@ public class IntegrationsCrudTest extends AbstractSyndesisRestTest {
 
 	private Response findIntegrationById(String id) {
 
-		final Response response = given().relaxedHTTPSValidation().auth().oauth2(token).request()
+		final Response response = given().relaxedHTTPSValidation().auth().oauth2(syndesisToken).request()
 				.pathParam("id", id)
 				.then().expect().response()
 				.when().get("/integrations/{id}");
@@ -134,7 +134,7 @@ public class IntegrationsCrudTest extends AbstractSyndesisRestTest {
 		final String integrationName = "Test";
 		final Integration testIntegration = SampleDataGenerator.createSampleIntegration(integrationName);
 
-		final Response integration = given().relaxedHTTPSValidation().auth().oauth2(token)
+		final Response integration = given().relaxedHTTPSValidation().auth().oauth2(syndesisToken)
 				.request().contentType("application/json").body(testIntegration)
 				.then().expect().response().body("name", equalTo(integrationName))
 				.when().post("/integrations");

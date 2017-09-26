@@ -6,7 +6,6 @@ import static io.restassured.RestAssured.given;
 
 import io.syndesis.qe.rest.tests.AbstractSyndesisRestTest;
 
-import org.junit.Ignore;
 import org.junit.Test;
 
 import io.restassured.response.Response;
@@ -28,7 +27,7 @@ public class DummyEndpointsTest extends AbstractSyndesisRestTest {
 	@Test
 	public void connectorgroupsTest() {
 
-		final Response response = given().relaxedHTTPSValidation().auth().oauth2(token)
+		final Response response = given().relaxedHTTPSValidation().auth().oauth2(syndesisToken)
 				.when()
 				.get("/connectorgroups");
 
@@ -45,7 +44,7 @@ public class DummyEndpointsTest extends AbstractSyndesisRestTest {
 	@Test
 	public void permissionsTest() {
 
-		final Response response = given().relaxedHTTPSValidation().auth().oauth2(token)
+		final Response response = given().relaxedHTTPSValidation().auth().oauth2(syndesisToken)
 				.when()
 				.get("/permissions");
 
@@ -61,7 +60,7 @@ public class DummyEndpointsTest extends AbstractSyndesisRestTest {
 	@Test
 	public void usersTest() {
 
-		final Response response = given().relaxedHTTPSValidation().auth().oauth2(token)
+		final Response response = given().relaxedHTTPSValidation().auth().oauth2(syndesisToken)
 				.when()
 				.get("/users");
 
@@ -79,7 +78,7 @@ public class DummyEndpointsTest extends AbstractSyndesisRestTest {
 	@Test
 	public void rolesTest() {
 
-		final Response response = given().relaxedHTTPSValidation().auth().oauth2(token)
+		final Response response = given().relaxedHTTPSValidation().auth().oauth2(syndesisToken)
 				.when()
 				.get("/roles");
 
@@ -95,7 +94,7 @@ public class DummyEndpointsTest extends AbstractSyndesisRestTest {
 	@Test
 	public void tagsTest() {
 
-		final Response response = given().relaxedHTTPSValidation().auth().oauth2(token)
+		final Response response = given().relaxedHTTPSValidation().auth().oauth2(syndesisToken)
 				.when()
 				.get("/tags");
 

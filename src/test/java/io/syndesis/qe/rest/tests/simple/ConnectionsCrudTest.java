@@ -35,7 +35,7 @@ public class ConnectionsCrudTest extends AbstractSyndesisRestTest {
 
 	@After
 	public void cleanUp() {
-		TestSupport.resetDB(token);
+		TestSupport.resetDB(syndesisToken);
 	}
 
 	/**
@@ -60,7 +60,7 @@ public class ConnectionsCrudTest extends AbstractSyndesisRestTest {
 		final String testConnectionName = "Test";
 		final Response connectionResponse = createSalesforceConnection(testConnectionName);
 
-		final Response result = given().relaxedHTTPSValidation().auth().oauth2(token)
+		final Response result = given().relaxedHTTPSValidation().auth().oauth2(syndesisToken)
 				.when()
 				.get("/connections");
 
@@ -88,7 +88,7 @@ public class ConnectionsCrudTest extends AbstractSyndesisRestTest {
 
 		final Connection connection = SampleDataGenerator.createSampleSalesforceConnection(newConnectionName, Optional.of(result.path("id").toString()));
 
-		given().relaxedHTTPSValidation().auth().oauth2(token).request()
+		given().relaxedHTTPSValidation().auth().oauth2(syndesisToken).request()
 				.contentType("application/json").body(connection)
 				.pathParam("id", result.path("id").toString())
 				.then().expect().response().statusCode(204)
@@ -106,7 +106,7 @@ public class ConnectionsCrudTest extends AbstractSyndesisRestTest {
 		final String testConnectionName = "Test";
 		final Response result = createSalesforceConnection(testConnectionName);
 
-		given().relaxedHTTPSValidation().auth().oauth2(token).request()
+		given().relaxedHTTPSValidation().auth().oauth2(syndesisToken).request()
 				.pathParam("id", result.path("id").toString())
 				.then().expect().response().statusCode(204).when().delete("/connections/{id}");
 
@@ -119,7 +119,7 @@ public class ConnectionsCrudTest extends AbstractSyndesisRestTest {
 
 	private Response findConnectionById(String id) {
 
-		final Response response = given().relaxedHTTPSValidation().auth().oauth2(token).request()
+		final Response response = given().relaxedHTTPSValidation().auth().oauth2(syndesisToken).request()
 				.pathParam("id", id)
 				.then().expect().response()
 				.when().get("/connections/{id}");
@@ -132,7 +132,7 @@ public class ConnectionsCrudTest extends AbstractSyndesisRestTest {
 	private Response createSalesforceConnection(String name) {
 
 		final Connection connection = SampleDataGenerator.createSampleSalesforceConnection(name);
-		final Response result = given().relaxedHTTPSValidation().auth().oauth2(token)
+		final Response result = given().relaxedHTTPSValidation().auth().oauth2(syndesisToken)
 				.request().contentType("application/json").body(connection)
 				.then().expect().response()
 				.body("name", equalTo(name))

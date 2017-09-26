@@ -7,19 +7,23 @@ This repository contains integration tests for syndesis-rest module.
 You may run the tests against a syndesis instance deployed on OpenShift as follows:
 
 ```bash
-mvn clean install -Dtoken=<SYNDESIS_USER_TOKEN> -Dsyndesis.url=<SYNDESIS_INSTANCE_URL> -Dcredentials.file=<PATH_TO_CREDENTIALS_FILE>
+mvn clean install -Dsyndesis.token=<SYNDESIS_USER_TOKEN> -Dsyndesis.url=<SYNDESIS_INSTANCE_URL> -Dcredentials.file=<PATH_TO_CREDENTIALS_FILE>
 ```
 
 ## System properties
 
 Several properties may influence coarse of the tests. Mandatory properties are shown in bold.
 
-* **token**
+* **syndesis.token**
     * valid token which can be used for accessing syndesis REST
 * **syndesis.url**
     * URL of running syndesis instance
 * **credentials.file**
     * JSON file with third party services credentials (see example below)
+* openshift.url
+    * token for accessing Openshift
+* openshift.token
+    * openshift master url
 * versions.file
     * Properties file which contains expected dependencies versions of syndesis generated integrations
 
