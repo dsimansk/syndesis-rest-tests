@@ -6,7 +6,6 @@ import org.apache.http.conn.ssl.TrustStrategy;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.ssl.SSLContextBuilder;
 
-import io.syndesis.qe.rest.exceptions.RestClientException;
 import org.jboss.resteasy.client.jaxrs.ResteasyClientBuilder;
 import org.jboss.resteasy.client.jaxrs.engines.ApacheHttpClient4Engine;
 import org.jboss.resteasy.plugins.providers.jackson.ResteasyJackson2Provider;
@@ -20,7 +19,7 @@ import javax.ws.rs.client.Client;
 import java.security.cert.CertificateException;
 import java.security.cert.X509Certificate;
 
-import io.syndesis.rest.v1.JacksonContextResolver;
+import io.syndesis.qe.rest.exceptions.RestClientException;
 
 /**
  * Utility class for Rest client (RestEasy).
@@ -39,7 +38,6 @@ public final class RestUtils {
 		ResteasyJackson2Provider jackson2Provider = RestUtils.createJacksonProvider();
 		ApacheHttpClient4Engine engine = new ApacheHttpClient4Engine(RestUtils.createAllTrustingClient());
 
-		JacksonContextResolver resolver = new JacksonContextResolver();
 		Client client = new ResteasyClientBuilder()
 				.providerFactory(new ResteasyProviderFactory()) // this is needed otherwise default jackson2provider is used, which causes problems with JDK8 Optional
 				.register(jackson2Provider)
@@ -62,7 +60,7 @@ public final class RestUtils {
 		HttpClient httpclient = null;
 		try {
 			SSLContextBuilder builder = new SSLContextBuilder();
-			builder.loadTrustMaterial( new TrustStrategy() {
+			builder.loadTrustMaterial(new TrustStrategy() {
 				@Override
 				public boolean isTrusted(X509Certificate[] chain, String authType) throws CertificateException {
 					return true;
