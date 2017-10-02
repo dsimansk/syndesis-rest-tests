@@ -7,29 +7,25 @@ This repository contains integration tests for syndesis-rest module.
 You may run the tests against a syndesis instance deployed on OpenShift as follows:
 
 ```bash
-mvn clean install -Dsyndesis.token=<SYNDESIS_USER_TOKEN> -Dsyndesis.url=<SYNDESIS_INSTANCE_URL> -Dcredentials.file=<PATH_TO_CREDENTIALS_FILE>
+mvn clean install -Dcredentials.file=<PATH_TO_CREDENTIALS_FILE>
 ```
 
 ## System properties
 
 Several properties may influence coarse of the tests. Mandatory properties are shown in bold.
 
-* **syndesis.token**
-    * valid token which can be used for accessing syndesis REST
-* **syndesis.url**
-    * URL of running syndesis instance
 * **credentials.file**
     * JSON file with third party services credentials (see example below)
-* openshift.url
+* **openshift.url**
     * token for accessing Openshift
-* openshift.token
+* **openshift.token**
     * openshift master url
-* versions.file
+* **versions.file**
     * Properties file which contains expected dependencies versions of syndesis generated integrations
 
 ### Credentials
 
-These tests require access to third party services such as GitHub, Twitter, and Salesforce. You will need at least:
+These tests require access to third party services such as GitHub, Twitter, and Salesforce. Also necessary	are	keycloak,	openshift	and	syndesis information. You will need at least:
 
 * a GitHub account
 * a Salesforce account
@@ -70,13 +66,44 @@ You should configure credentials for these services in JSON file with following 
       "password": "*********"
     }
   },
-  "github": {
-    "service": "github",
-    "properties": {
-      "login": "**********",
-      "token": "****************************************"
+  "github":	{
+      "service":	"github",
+      "properties":	{
+          "login":	"**********",
+          "token":	"****************************************",
+      "password":	"***************",
+      "githubOauthAppId":	"********************",
+      "githubOauthAppSecret":	"****************************************"
+    }
+  },
+  "openshift":	{
+    "service":	"openshift",
+    "properties":	{
+      "instanceUrl":	"***************************",
+      "userUID":	""
+    }
+  },
+  "keycloak":	{
+    "service":	"keycloak",
+    "properties":	{
+      "instanceUrl":	"********************************************/auth",
+      "userTokenUrl":	"**********************************/auth",
+      "adminLogin":	"*****",
+      "adminPassword":	"****************************************",
+      "syndesisRealmName":	"syndesis",
+      "syndesisClientName":	"syndesis-ui",
+      "kcFirstName":	"John",
+      "kcLastName":	"Doe",
+      "kcEmail":	"test@test.com"
+    }
+  },
+  "syndesis":	{
+    "service":	"syndesis",
+    "properties":	{
+      "instanceUrl":	"**********************************",
+      "login":	"****",
+      "password":	"****"
     }
   }
 }
 ```
-
